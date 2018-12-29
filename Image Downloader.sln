@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image Downloader", "Image Downloader\Image Downloader.csproj", "{1409B4FB-7023-4789-8A48-6A2AD94B82F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1409B4FB-7023-4789-8A48-6A2AD94B82F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1409B4FB-7023-4789-8A48-6A2AD94B82F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1409B4FB-7023-4789-8A48-6A2AD94B82F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1409B4FB-7023-4789-8A48-6A2AD94B82F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DC0FF4F-7932-4BF4-9640-4A92BCCB9F07}
+	EndGlobalSection
+EndGlobal
