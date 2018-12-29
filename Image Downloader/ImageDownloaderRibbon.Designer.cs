@@ -36,7 +36,7 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.buttonGetImages = this.Factory.CreateRibbonButton();
+            this.ButtonGetImages = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -50,18 +50,18 @@
             // 
             // group1
             // 
-            this.group1.Items.Add(this.buttonGetImages);
+            this.group1.Items.Add(this.ButtonGetImages);
             this.group1.Label = "Image Downloader";
             this.group1.Name = "group1";
             // 
-            // buttonGetImages
+            // ButtonGetImages
             // 
-            this.buttonGetImages.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.buttonGetImages.Label = "Get Images";
-            this.buttonGetImages.Name = "buttonGetImages";
-            this.buttonGetImages.OfficeImageId = "GroupPictureButton";
-            this.buttonGetImages.ShowImage = true;
-            this.buttonGetImages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ButtonGetImages_Click);
+            this.ButtonGetImages.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.ButtonGetImages.Label = "Get Images";
+            this.ButtonGetImages.Name = "ButtonGetImages";
+            this.ButtonGetImages.OfficeImageId = "GroupPictureButton";
+            this.ButtonGetImages.ShowImage = true;
+            this.ButtonGetImages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ButtonGetImages_Click);
             // 
             // ImageDownloaderRibbon
             // 
@@ -81,7 +81,7 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonGetImages;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton ButtonGetImages;
     }
 
     partial class ThisRibbonCollection

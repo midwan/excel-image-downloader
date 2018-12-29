@@ -56,7 +56,7 @@ namespace Image_Downloader
         {
             var cell = Application.Cells[row, column];
             var value = cell.Value;
-            return value != null ? (string) value.ToString() : null;
+            return value != null ? (string)value.ToString() : null;
         }
 
         public void Cleanup()
@@ -101,14 +101,14 @@ namespace Image_Downloader
                 image.Width = 100;
 
             imageCell.EntireRow.RowHeight = image.Height;
-            CalculateLargestColumnWidth((int) image.Width);
+            CalculateLargestColumnWidth((int)image.Width);
             image.Placement = XlPlacement.xlMove;
         }
 
         private void CalculateLargestColumnWidth(int imageWidth)
         {
             if (imageWidth > _columnWidth)
-                _columnWidth = imageWidth <= 100 ? imageWidth : 100;
+                _columnWidth = imageWidth < 100 ? imageWidth : 100;
         }
 
         public void AddCellComment(int row, int column, string comment)
