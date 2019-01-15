@@ -92,15 +92,29 @@ namespace Image_Downloader
 
         public async Task DownloadImage(string url)
         {
-            try
+            if (!Properties.Settings.Default.AuthRequired)
+                try
+                {
+                    var stream = await _client.GetStreamAsync(url);
+                    var bitmap = new Bitmap(stream);
+                    bitmap.Save("image.png", ImageFormat.Png);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine($"{e}, {e.Message}, {e.InnerException}");
+                }
+            else
             {
-                var stream = await _client.GetStreamAsync(url);
-                var bitmap = new Bitmap(stream);
-                bitmap.Save("image.png", ImageFormat.Png);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"{e}, {e.Message}, {e.InnerException}");
+                try
+                {
+                    //TODO Authenticate to target website first
+
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine($"{e}, {e.Message}, {e.InnerException}");
+                }
+                
             }
         }
 
