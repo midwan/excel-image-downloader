@@ -70,5 +70,17 @@ namespace Image_Downloader.Properties {
                 this["AuthPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RowDetectionManual {
+            get {
+                return ((bool)(this["RowDetectionManual"]));
+            }
+            set {
+                this["RowDetectionManual"] = value;
+            }
+        }
     }
 }

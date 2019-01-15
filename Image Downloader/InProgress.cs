@@ -27,7 +27,13 @@ namespace Image_Downloader
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 100;
             LabelStatus.Text = @"Please wait, this can take a long time depending on the number of URLs...";
+            
             await DoWork();
+
+            if (InvokeRequired)
+                Invoke(new Action(Close));
+            else
+                Close();
         }
 
         private async Task DoWork()
@@ -47,7 +53,7 @@ namespace Image_Downloader
             var totalRows = Globals.ThisAddIn.CountRowsWithUrls(column);
             Globals.ThisAddIn.InsertImagesColumn(column);
 
-            var row = 2;
+            var row = Globals.ThisAddIn.GetStartingRow();
             var url = Globals.ThisAddIn.GetCellValue(row, column + 1);
 
             while (!string.IsNullOrEmpty(url))
@@ -79,6 +85,8 @@ namespace Image_Downloader
         // This event handler updates the progress.
         private void ProgressChanged(int percentage)
         {
+            if (percentage > 100)
+                percentage = 100;
             if (progressBar1.InvokeRequired)
                 Invoke(new Action(() => progressBar1.Value = percentage));
             else

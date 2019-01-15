@@ -29,6 +29,13 @@ namespace Image_Downloader
 
         public int FindUrlColumn()
         {
+            return Properties.Settings.Default.ColumnDetectionManual 
+                ? GetSelectedColumn() 
+                : FindUrlColumnAutomatic();
+        }
+
+        private int FindUrlColumnAutomatic()
+        {
             const int row = 2;
             var column = 1;
 
@@ -43,6 +50,18 @@ namespace Image_Downloader
             }
 
             return 0;
+        }
+
+        private int GetSelectedColumn()
+        {
+            var cell = Application.ActiveCell;
+            return cell.Column;
+        }
+
+        private int GetSelectedRow()
+        {
+            var cell = Application.ActiveCell;
+            return cell.Row;
         }
 
         public void InsertImagesColumn(int column)
@@ -123,10 +142,17 @@ namespace Image_Downloader
                    value.StartsWith("https://");
         }
 
+        public int GetStartingRow()
+        {
+            return Properties.Settings.Default.RowDetectionManual 
+                ? GetSelectedRow() 
+                : 2; // we assume row 1 is Titles only
+        }
+
         public int CountRowsWithUrls(int column)
         {
             var result = 1;
-            var row = 2; // we assume row 1 is Titles only
+            var row = GetStartingRow();
 
             var value = GetCellValue(row, column);
             while (!string.IsNullOrEmpty(value))
