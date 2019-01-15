@@ -19,5 +19,11 @@ namespace Image_Downloader
             var form = new InProgress();
             form.Show();
         }
+
+        private void btnSettings_Click(object sender, RibbonControlEventArgs e)
+        {
+            var form = new SettingsWindow();
+            form.Show();
+        }
     }
 }

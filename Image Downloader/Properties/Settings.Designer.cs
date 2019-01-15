@@ -22,5 +22,53 @@ namespace Image_Downloader.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ColumnDetectionManual {
+            get {
+                return ((bool)(this["ColumnDetectionManual"]));
+            }
+            set {
+                this["ColumnDetectionManual"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AuthRequired {
+            get {
+                return ((bool)(this["AuthRequired"]));
+            }
+            set {
+                this["AuthRequired"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AuthUsername {
+            get {
+                return ((string)(this["AuthUsername"]));
+            }
+            set {
+                this["AuthUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AuthPassword {
+            get {
+                return ((string)(this["AuthPassword"]));
+            }
+            set {
+                this["AuthPassword"] = value;
+            }
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.buttonGetImages = this.Factory.CreateRibbonButton();
+            this.btnSettings = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             // group1
             // 
             this.group1.Items.Add(this.buttonGetImages);
+            this.group1.Items.Add(this.btnSettings);
             this.group1.Label = "Image Downloader";
             this.group1.Name = "group1";
             // 
@@ -62,6 +64,15 @@
             this.buttonGetImages.OfficeImageId = "GroupPictureButton";
             this.buttonGetImages.ShowImage = true;
             this.buttonGetImages.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ButtonGetImages_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnSettings.Label = "Settings";
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.OfficeImageId = "CurrentViewSettings";
+            this.btnSettings.ShowImage = true;
+            this.btnSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnSettings_Click);
             // 
             // ImageDownloaderRibbon
             // 
@@ -82,6 +93,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonGetImages;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSettings;
     }
 
     partial class ThisRibbonCollection
