@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Image_Downloader.Properties;
 using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Excel;
 
@@ -14,13 +15,32 @@ namespace Image_Downloader
     public partial class ThisAddIn
     {
         // Create a New HttpClient object.
-        private readonly HttpClient _client = new HttpClient();
+        private HttpClient _client;
         private int _columnWidth;
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             _columnWidth = 0;
+
+            var defaultProxy = WebRequest.GetSystemWebProxy();
+            var httpClientHandler = new HttpClientHandler
+            {
+                Proxy = defaultProxy
+            };
+
+            if (Settings.Default.AuthRequired)
+            {
+                httpClientHandler.PreAuthenticate = true;
+                httpClientHandler.UseDefaultCredentials = false;
+                httpClientHandler.Credentials = new NetworkCredential
+                {
+                    UserName = Settings.Default.AuthUsername,
+                    Password = Settings.Default.AuthPassword
+                };
+            }
+
+            _client = new HttpClient(httpClientHandler, true);
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
@@ -29,8 +49,8 @@ namespace Image_Downloader
 
         public int FindUrlColumn()
         {
-            return Properties.Settings.Default.ColumnDetectionManual 
-                ? GetSelectedColumn() 
+            return Settings.Default.ColumnDetectionManual
+                ? GetSelectedColumn()
                 : FindUrlColumnAutomatic();
         }
 
@@ -92,29 +112,15 @@ namespace Image_Downloader
 
         public async Task DownloadImage(string url)
         {
-            if (!Properties.Settings.Default.AuthRequired)
-                try
-                {
-                    var stream = await _client.GetStreamAsync(url);
-                    var bitmap = new Bitmap(stream);
-                    bitmap.Save("image.png", ImageFormat.Png);
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine($"{e}, {e.Message}, {e.InnerException}");
-                }
-            else
+            try
             {
-                try
-                {
-                    //TODO Authenticate to target website first
-
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine($"{e}, {e.Message}, {e.InnerException}");
-                }
-                
+                var stream = await _client.GetStreamAsync(url);
+                var bitmap = new Bitmap(stream);
+                bitmap.Save("image.png", ImageFormat.Png);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{e}, {e.Message}, {e.InnerException}");
             }
         }
 
@@ -158,8 +164,8 @@ namespace Image_Downloader
 
         public int GetStartingRow()
         {
-            return Properties.Settings.Default.RowDetectionManual 
-                ? GetSelectedRow() 
+            return Settings.Default.RowDetectionManual
+                ? GetSelectedRow()
                 : 2; // we assume row 1 is Titles only
         }
 
