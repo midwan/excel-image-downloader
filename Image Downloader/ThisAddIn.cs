@@ -26,7 +26,8 @@ namespace Image_Downloader
             var defaultProxy = WebRequest.GetSystemWebProxy();
             var httpClientHandler = new HttpClientHandler
             {
-                Proxy = defaultProxy
+                Proxy = defaultProxy,
+                UseDefaultCredentials = true
             };
 
             if (Settings.Default.AuthRequired)
