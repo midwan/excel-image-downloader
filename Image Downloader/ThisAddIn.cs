@@ -59,10 +59,12 @@ namespace Image_Downloader
             var column = 1;
 
             Range cell = Application.Cells[row, column];
-            if (cell.Value == null) return 0;
-            while (!string.IsNullOrEmpty(cell.Value.ToString()))
+            if (cell.Value == null)
+                return 0;
+            while (!string.IsNullOrEmpty(cell.Value?.ToString()))
             {
-                if (IsValidUrl(cell.Value.ToString())) return column;
+                if (IsValidUrl(cell.Value?.ToString()))
+                    return column;
 
                 column++;
                 cell = Application.Cells[row, column];

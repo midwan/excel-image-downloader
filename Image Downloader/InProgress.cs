@@ -42,11 +42,8 @@ namespace Image_Downloader
             if (column == 0)
             {
                 _cancellationPending = true;
-                if (LabelStatus.InvokeRequired)
-                    Invoke(new Action(() =>
-                        LabelStatus.Text = @"No column containing URLs was found! Cannot proceed..."));
-                else
-                    LabelStatus.Text = @"No column containing URLs was found! Cannot proceed...";
+                MessageBox.Show(@"No column containing URLs was found! Cannot proceed...",
+                    @"No URL column found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
