@@ -23,14 +23,9 @@ namespace Image_Downloader
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             _columnWidth = 0;
 
-            var defaultProxy = (WebProxy)WebRequest.GetSystemWebProxy();
-            defaultProxy.UseDefaultCredentials = true;
-
             var httpClientHandler = new HttpClientHandler
             {
-                Proxy = defaultProxy,
-                UseDefaultCredentials = true,
-                UseProxy = true
+                UseDefaultCredentials = true
             };
 
             if (Settings.Default.AuthRequired)
