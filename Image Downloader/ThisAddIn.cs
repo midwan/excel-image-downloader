@@ -25,11 +25,13 @@ namespace Image_Downloader
 
             var httpClientHandler = new HttpClientHandler
             {
-                UseDefaultCredentials = true
+                UseDefaultCredentials = true,
+                DefaultProxyCredentials = CredentialCache.DefaultCredentials
             };
 
             if (Settings.Default.AuthRequired)
             {
+                httpClientHandler.DefaultProxyCredentials = CredentialCache.DefaultCredentials;
                 httpClientHandler.PreAuthenticate = true;
                 httpClientHandler.UseDefaultCredentials = false;
                 httpClientHandler.Credentials = new NetworkCredential
