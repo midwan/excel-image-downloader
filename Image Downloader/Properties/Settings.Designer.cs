@@ -82,5 +82,17 @@ namespace Image_Downloader.Properties {
                 this["RowDetectionManual"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public decimal ImagesColumnWidth {
+            get {
+                return ((decimal)(this["ImagesColumnWidth"]));
+            }
+            set {
+                this["ImagesColumnWidth"] = value;
+            }
+        }
     }
 }

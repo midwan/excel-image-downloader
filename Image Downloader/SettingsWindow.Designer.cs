@@ -34,17 +34,21 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.grpColumnDetection = new System.Windows.Forms.GroupBox();
+            this.rdbFirstSelected = new System.Windows.Forms.RadioButton();
             this.grpAuth = new System.Windows.Forms.GroupBox();
-            this.grpStartingRow = new System.Windows.Forms.GroupBox();
-            this.rdbRow2 = new System.Windows.Forms.RadioButton();
-            this.rdbFirstSelectedRow = new System.Windows.Forms.RadioButton();
             this.tboxUsername = new System.Windows.Forms.TextBox();
             this.chkRequireLogin = new System.Windows.Forms.CheckBox();
             this.tboxPassword = new System.Windows.Forms.TextBox();
-            this.rdbFirstSelected = new System.Windows.Forms.RadioButton();
+            this.grpStartingRow = new System.Windows.Forms.GroupBox();
+            this.rdbFirstSelectedRow = new System.Windows.Forms.RadioButton();
+            this.rdbRow2 = new System.Windows.Forms.RadioButton();
+            this.lblImageColumWidth = new System.Windows.Forms.Label();
+            this.numericUpDownImageColumnWidth = new System.Windows.Forms.NumericUpDown();
+            this.lblMax = new System.Windows.Forms.Label();
             this.grpColumnDetection.SuspendLayout();
             this.grpAuth.SuspendLayout();
             this.grpStartingRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownImageColumnWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // rdbAuto
@@ -80,7 +84,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(12, 227);
+            this.btnSave.Location = new System.Drawing.Point(12, 271);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 30);
             this.btnSave.TabIndex = 8;
@@ -91,7 +95,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(222, 227);
+            this.btnCancel.Location = new System.Drawing.Point(222, 271);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(85, 30);
             this.btnCancel.TabIndex = 9;
@@ -110,54 +114,32 @@
             this.grpColumnDetection.TabStop = false;
             this.grpColumnDetection.Text = "Column Detection";
             // 
+            // rdbFirstSelected
+            // 
+            this.rdbFirstSelected.AutoSize = true;
+            this.rdbFirstSelected.Checked = global::Image_Downloader.Properties.Settings.Default.ColumnDetectionManual;
+            this.rdbFirstSelected.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Image_Downloader.Properties.Settings.Default, "ColumnDetectionManual", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.rdbFirstSelected.Location = new System.Drawing.Point(12, 43);
+            this.rdbFirstSelected.Name = "rdbFirstSelected";
+            this.rdbFirstSelected.Size = new System.Drawing.Size(106, 17);
+            this.rdbFirstSelected.TabIndex = 2;
+            this.rdbFirstSelected.Text = "First selected cell";
+            this.rdbFirstSelected.UseVisualStyleBackColor = true;
+            // 
             // grpAuth
             // 
+            this.grpAuth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.grpAuth.Controls.Add(this.tboxUsername);
             this.grpAuth.Controls.Add(this.chkRequireLogin);
             this.grpAuth.Controls.Add(this.lblUsername);
             this.grpAuth.Controls.Add(this.lblPassword);
             this.grpAuth.Controls.Add(this.tboxPassword);
-            this.grpAuth.Location = new System.Drawing.Point(12, 88);
+            this.grpAuth.Location = new System.Drawing.Point(12, 141);
             this.grpAuth.Name = "grpAuth";
             this.grpAuth.Size = new System.Drawing.Size(295, 124);
             this.grpAuth.TabIndex = 11;
             this.grpAuth.TabStop = false;
             this.grpAuth.Text = "Authentication";
-            // 
-            // grpStartingRow
-            // 
-            this.grpStartingRow.Controls.Add(this.rdbFirstSelectedRow);
-            this.grpStartingRow.Controls.Add(this.rdbRow2);
-            this.grpStartingRow.Location = new System.Drawing.Point(144, 13);
-            this.grpStartingRow.Name = "grpStartingRow";
-            this.grpStartingRow.Size = new System.Drawing.Size(163, 69);
-            this.grpStartingRow.TabIndex = 12;
-            this.grpStartingRow.TabStop = false;
-            this.grpStartingRow.Text = "Starting Row";
-            // 
-            // rdbRow2
-            // 
-            this.rdbRow2.AutoSize = true;
-            this.rdbRow2.Checked = true;
-            this.rdbRow2.Location = new System.Drawing.Point(6, 18);
-            this.rdbRow2.Name = "rdbRow2";
-            this.rdbRow2.Size = new System.Drawing.Size(138, 17);
-            this.rdbRow2.TabIndex = 0;
-            this.rdbRow2.TabStop = true;
-            this.rdbRow2.Text = "Row 2 (First row is titles)";
-            this.rdbRow2.UseVisualStyleBackColor = true;
-            // 
-            // rdbFirstSelectedRow
-            // 
-            this.rdbFirstSelectedRow.AutoSize = true;
-            this.rdbFirstSelectedRow.Checked = global::Image_Downloader.Properties.Settings.Default.RowDetectionManual;
-            this.rdbFirstSelectedRow.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Image_Downloader.Properties.Settings.Default, "RowDetectionManual", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.rdbFirstSelectedRow.Location = new System.Drawing.Point(6, 42);
-            this.rdbFirstSelectedRow.Name = "rdbFirstSelectedRow";
-            this.rdbFirstSelectedRow.Size = new System.Drawing.Size(106, 17);
-            this.rdbFirstSelectedRow.TabIndex = 1;
-            this.rdbFirstSelectedRow.Text = "First selected cell";
-            this.rdbFirstSelectedRow.UseVisualStyleBackColor = true;
             // 
             // tboxUsername
             // 
@@ -191,23 +173,76 @@
             this.tboxPassword.Text = global::Image_Downloader.Properties.Settings.Default.AuthPassword;
             this.tboxPassword.UseSystemPasswordChar = true;
             // 
-            // rdbFirstSelected
+            // grpStartingRow
             // 
-            this.rdbFirstSelected.AutoSize = true;
-            this.rdbFirstSelected.Checked = global::Image_Downloader.Properties.Settings.Default.ColumnDetectionManual;
-            this.rdbFirstSelected.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Image_Downloader.Properties.Settings.Default, "ColumnDetectionManual", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.rdbFirstSelected.Location = new System.Drawing.Point(12, 43);
-            this.rdbFirstSelected.Name = "rdbFirstSelected";
-            this.rdbFirstSelected.Size = new System.Drawing.Size(106, 17);
-            this.rdbFirstSelected.TabIndex = 2;
-            this.rdbFirstSelected.Text = "First selected cell";
-            this.rdbFirstSelected.UseVisualStyleBackColor = true;
+            this.grpStartingRow.Controls.Add(this.rdbFirstSelectedRow);
+            this.grpStartingRow.Controls.Add(this.rdbRow2);
+            this.grpStartingRow.Location = new System.Drawing.Point(144, 13);
+            this.grpStartingRow.Name = "grpStartingRow";
+            this.grpStartingRow.Size = new System.Drawing.Size(163, 69);
+            this.grpStartingRow.TabIndex = 12;
+            this.grpStartingRow.TabStop = false;
+            this.grpStartingRow.Text = "Starting Row";
+            // 
+            // rdbFirstSelectedRow
+            // 
+            this.rdbFirstSelectedRow.AutoSize = true;
+            this.rdbFirstSelectedRow.Checked = global::Image_Downloader.Properties.Settings.Default.RowDetectionManual;
+            this.rdbFirstSelectedRow.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Image_Downloader.Properties.Settings.Default, "RowDetectionManual", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.rdbFirstSelectedRow.Location = new System.Drawing.Point(6, 42);
+            this.rdbFirstSelectedRow.Name = "rdbFirstSelectedRow";
+            this.rdbFirstSelectedRow.Size = new System.Drawing.Size(106, 17);
+            this.rdbFirstSelectedRow.TabIndex = 1;
+            this.rdbFirstSelectedRow.Text = "First selected cell";
+            this.rdbFirstSelectedRow.UseVisualStyleBackColor = true;
+            // 
+            // rdbRow2
+            // 
+            this.rdbRow2.AutoSize = true;
+            this.rdbRow2.Checked = true;
+            this.rdbRow2.Location = new System.Drawing.Point(6, 18);
+            this.rdbRow2.Name = "rdbRow2";
+            this.rdbRow2.Size = new System.Drawing.Size(138, 17);
+            this.rdbRow2.TabIndex = 0;
+            this.rdbRow2.TabStop = true;
+            this.rdbRow2.Text = "Row 2 (First row is titles)";
+            this.rdbRow2.UseVisualStyleBackColor = true;
+            // 
+            // lblImageColumWidth
+            // 
+            this.lblImageColumWidth.AutoSize = true;
+            this.lblImageColumWidth.Location = new System.Drawing.Point(12, 96);
+            this.lblImageColumWidth.Name = "lblImageColumWidth";
+            this.lblImageColumWidth.Size = new System.Drawing.Size(113, 13);
+            this.lblImageColumWidth.TabIndex = 13;
+            this.lblImageColumWidth.Text = "Images Column Width:";
+            // 
+            // numericUpDownImageColumnWidth
+            // 
+            this.numericUpDownImageColumnWidth.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Image_Downloader.Properties.Settings.Default, "ImagesColumnWidth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDownImageColumnWidth.Location = new System.Drawing.Point(144, 94);
+            this.numericUpDownImageColumnWidth.Name = "numericUpDownImageColumnWidth";
+            this.numericUpDownImageColumnWidth.Size = new System.Drawing.Size(69, 20);
+            this.numericUpDownImageColumnWidth.TabIndex = 14;
+            this.numericUpDownImageColumnWidth.Value = global::Image_Downloader.Properties.Settings.Default.ImagesColumnWidth;
+            // 
+            // lblMax
+            // 
+            this.lblMax.AutoSize = true;
+            this.lblMax.Location = new System.Drawing.Point(224, 96);
+            this.lblMax.Name = "lblMax";
+            this.lblMax.Size = new System.Drawing.Size(64, 13);
+            this.lblMax.TabIndex = 15;
+            this.lblMax.Text = "(Max is 100)";
             // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 269);
+            this.ClientSize = new System.Drawing.Size(319, 313);
+            this.Controls.Add(this.lblMax);
+            this.Controls.Add(this.numericUpDownImageColumnWidth);
+            this.Controls.Add(this.lblImageColumWidth);
             this.Controls.Add(this.grpStartingRow);
             this.Controls.Add(this.grpAuth);
             this.Controls.Add(this.grpColumnDetection);
@@ -222,7 +257,9 @@
             this.grpAuth.PerformLayout();
             this.grpStartingRow.ResumeLayout(false);
             this.grpStartingRow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownImageColumnWidth)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -241,5 +278,8 @@
         private System.Windows.Forms.GroupBox grpStartingRow;
         private System.Windows.Forms.RadioButton rdbFirstSelectedRow;
         private System.Windows.Forms.RadioButton rdbRow2;
+        private System.Windows.Forms.Label lblImageColumWidth;
+        private System.Windows.Forms.NumericUpDown numericUpDownImageColumnWidth;
+        private System.Windows.Forms.Label lblMax;
     }
 }
