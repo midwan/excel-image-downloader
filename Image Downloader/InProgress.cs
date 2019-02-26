@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Image_Downloader.Properties;
 
 namespace Image_Downloader
 {
@@ -52,6 +53,7 @@ namespace Image_Downloader
 
             var row = Globals.ThisAddIn.GetStartingRow();
             var url = Globals.ThisAddIn.GetCellValue(row, column + 1);
+            Globals.ThisAddIn.UpdateColumnWidth(column, (int)Settings.Default.ImagesColumnWidth);
 
             while (!string.IsNullOrEmpty(url))
             {
@@ -75,7 +77,7 @@ namespace Image_Downloader
                 url = Globals.ThisAddIn.GetCellValue(row, column + 1);
             }
 
-            Globals.ThisAddIn.UpdateColumnWidth(column);
+            //Globals.ThisAddIn.UpdateColumnWidth(column);
             WorkCompleted();
         }
 
