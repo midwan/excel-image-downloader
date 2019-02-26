@@ -195,6 +195,12 @@ namespace Image_Downloader
             cell.EntireColumn.ColumnWidth = _columnWidth;
         }
 
+        public void UpdateColumnWidth(int column, int width)
+        {
+            Range cell = Application.Cells[1, column];
+            cell.EntireColumn.ColumnWidth = width;
+        }
+
         #region VSTO generated code
 
         /// <summary>
