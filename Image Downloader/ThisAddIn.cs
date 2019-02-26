@@ -143,8 +143,8 @@ namespace Image_Downloader
                 image.Width = 100;
 
             imageCell.EntireRow.RowHeight = image.Height;
-            CalculateLargestColumnWidth((int) image.Width);
-            image.Placement = XlPlacement.xlMove;
+            CalculateLargestColumnWidth((int)image.Width);
+            image.Placement = XlPlacement.xlMoveAndSize;
         }
 
         private void CalculateLargestColumnWidth(int imageWidth)
